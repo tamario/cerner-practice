@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="/node_modules/fhirclient/fhir-client.js"></script>
+    <script src="/js/read_patient.js"></script>
+    <title>tamario-cerner-practice</title>
+</head>
+<body>
+
+<div id='errors'>
+</div>
+<div id="loading" class="spinner">
+    <div class="bounce1"></div>
+    <div class="bounce2"></div>
+    <div class="bounce3"></div>
+</div>
+<div id='holder' >
+    <h2>Example-SMART-App</h2>
+
+    <h1>Documents for <span id="name"></span></h1>
+    <h2>Photographs</h2>
+    <ul id="photo_list"></ul>
+    <h2>Notes and Reports</h2>
+    <ul id="doc_list"></ul>
+
+    <h2>Patient Resource</h2>
+    <table>
+        <tr>
+            <th>First Name:</th>
+            <td id='fname'></td>
+        </tr>
+        <tr>
+            <th>Last Name:</th>
+            <td id='lname'></td>
+        </tr>
+        <tr>
+            <th>Gender:</th>
+            <td id='gender'></td>
+        </tr>
+        <tr>
+            <th>Date of Birth:</th>
+            <td id='birthdate'></td>
+        </tr>
+        <tr>
+            <th>Age:</th>
+            <td id='age'></td>
+        </tr>
+    </table>
+    <h2>Observation Resource</h2>
+    <table>
+        <tr>
+            <th>Height:</th>
+            <td id='height'></td>
+        </tr>
+        <tr>
+            <th>Systolic Blood Pressure:</th>
+            <td id='systolicbp'></td>
+
+        </tr>
+        <tr>
+            <th>Diastolic Blood Pressure:</th>
+            <td id='diastolicbp'></td>
+        </tr>
+        <tr>
+            <th>LDL:</th>
+            <td id='ldl'></td>
+        </tr>
+        <tr>
+            <th>HDL:</th>
+            <td id='hdl'></td>
+        </tr>
+    </table>
+</div>
+
+<script>
+    extractData().then(
+        //Display Patient Demographics and Observations if extractData was success
+        function(p) {
+            drawVisualization(p);
+        },
+
+        //Display 'Failed to call FHIR Service' if extractData failed
+        function() {
+            $('#loading').hide();
+            $('#errors').html('<p> Failed to call FHIR Service </p>');
+        }
+    );
+</script>
+</body>
+</html>
