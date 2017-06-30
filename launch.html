@@ -1,13 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <script src="/node_modules/fhirclient/fhir-client.js"></script>
-    <script>
-        FHIR.oauth2.authorize({
-            "client_id": "a26536d9-d921-4901-812d-b392d5b96563",
-            "scope": "patient/DocumentReference.write patient/DocumentReference.read patient/Patient.read patient/Observation.read launch online_access openid profile"
-        });
-    </script>
+    <title>Example-SMART-App</title>
 </head>
-<body>Loading...</body>
+<body>
+<script src="/node_modules/fhirclient/fhir-client.js"></script>
+<script>
+    FHIR.oauth2.authorize({
+        'client_id': 'a26536d9-d921-4901-812d-b392d5b96563',
+        'scope':  'patient/DocumentReference.write patient/DocumentReference.read patient/Patient.read patient/Observation.read launch online_access openid profile'
+    });
+</script>
+<div class="spinner">
+    <div class="bounce1"></div>
+    <div class="bounce2"></div>
+    <div class="bounce3"></div>
+</div>
+</body>
 </html>
